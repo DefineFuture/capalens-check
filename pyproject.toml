@@ -31,8 +31,8 @@ yaml = ["pyyaml>=6.0"]
 dev = ["pytest>=8.0", "ruff>=0.7", "mypy>=1.13", "jsonschema>=4.23"]
 
 [project.urls]
-# Intended location; the repository does not exist until publication is approved (RELEASING.md).
-Homepage = "https://github.com/DefineFuture/capalens-check"
+Homepage = "https://capalens.com"
+Repository = "https://github.com/DefineFuture/capalens-check"
 Documentation = "https://github.com/DefineFuture/capalens-check/tree/main/docs"
 Issues = "https://github.com/DefineFuture/capalens-check/issues"
 Changelog = "https://github.com/DefineFuture/capalens-check/blob/main/CHANGELOG.md"

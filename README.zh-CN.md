@@ -1,8 +1,13 @@
 # capalens-check
 
+[![Website](https://img.shields.io/badge/website-capalens.com-0b6fbf)](https://capalens.com)
+[![CI](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml/badge.svg)](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776ab)
+
 **面向 AI 智能体所连接对象的只读检查工具：MCP 服务器、OpenAPI 文档、A2A Agent Card 和 Agent Skills。每条结果都附证据，不打分。**
 
-[English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
+[官网](https://capalens.com) · [English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [持续监测](docs/monitoring.md) · [报告格式](docs/report-format.md) · [方法说明](docs/methodology.md) ·
 [同类项目对比](docs/comparison.md)
 
@@ -101,7 +106,7 @@ capalens-check run capalens-targets.json --baseline last-report.json --json-out 
 
 ## 与 CapaLens 的关系
 
-CapaLens 为 MCP 服务器、API、智能体、技能等 AI 接入建立有证据支撑的目录。它的检测引擎是完整的四层流水线，带签名、版本化的证据和人工复核。
+[CapaLens](https://capalens.com) 为 MCP 服务器、API、智能体、技能等 AI 接入建立有证据支撑的目录。它的检测引擎是完整的四层流水线，带签名、版本化的证据和人工复核。
 
 `capalens-check` 取其中一部分检查和共享的启发式算法（`action-heuristic/3`、`poisoning-lexicon/0.1`），做成随处可运行的工具。本工具的结果不是 CapaLens 目录结果。
 

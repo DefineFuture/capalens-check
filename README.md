@@ -1,9 +1,14 @@
 # capalens-check
 
+[![Website](https://img.shields.io/badge/website-capalens.com-0b6fbf)](https://capalens.com)
+[![CI](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml/badge.svg)](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776ab)
+
 **Read-only checks for the things AI agents connect to — MCP servers, OpenAPI documents, A2A Agent Cards and
 Agent Skills. Evidence for every result. No scores.**
 
-[中文说明](README.zh-CN.md) · [Checks](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
+[Website](https://capalens.com) · [中文说明](README.zh-CN.md) · [Checks](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [Monitoring](docs/monitoring.md) · [Report format](docs/report-format.md) · [Methodology](docs/methodology.md) ·
 [Similar projects](docs/comparison.md)
 
@@ -152,11 +157,11 @@ docker run --rm -v "$PWD:/work" capalens-check openapi /work/openapi.json
 
 ## Relationship to CapaLens
 
-[CapaLens](https://github.com/DefineFuture) maps AI integrations — MCP servers, APIs, agents, skills — with evidence
+[CapaLens](https://capalens.com) maps AI integrations — MCP servers, APIs, agents, skills — with evidence
 about what they are and how they behave. Its detection engine runs a larger, four-layer pipeline with signed,
 versioned evidence and human review. `capalens-check` takes a subset of that engine's checks and its shared
 heuristics (`action-heuristic/3`, `poisoning-lexicon/0.1`) and makes them easy to run anywhere. Results from
-this tool are not CapaLens catalogue results.
+this tool are not CapaLens catalogue results. Learn more at [capalens.com](https://capalens.com).
 
 ## Contributing, security, license
 
