@@ -40,7 +40,7 @@ servers defined in the tests.
 
 * One change per pull request; describe the user-visible effect and add a line to `CHANGELOG.md` under
   "Unreleased".
-* CI must pass (lint, types, tests on Linux, Windows and macOS).
+* CI must pass (lint, types, tests on Linux, Windows and macOS, Python 3.11-3.14).
 * By contributing you agree that your contribution is licensed under the Apache License 2.0
   ([inbound = outbound](https://www.apache.org/licenses/LICENSE-2.0#contributions)). Please sign off your
   commits (`git commit -s`, the [Developer Certificate of Origin](https://developercertificate.org/)).

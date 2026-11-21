@@ -24,7 +24,7 @@
 
 ## 安装
 
-需要 Python 3.10 及以上：
+需要 Python 3.11 及以上：
 
 ```bash
 pipx install capalens-check                                   # 发布到 PyPI 之后

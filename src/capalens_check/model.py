@@ -78,7 +78,7 @@ def arr(value: Any) -> list[Any]:
 
 
 def now() -> str:
-    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 @dataclass

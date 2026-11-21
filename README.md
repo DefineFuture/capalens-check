@@ -39,7 +39,7 @@ $ capalens-check mcp https://mcp.example.com/mcp
 
 ## Install
 
-Python 3.10 or newer.
+Python 3.11 or newer.
 
 ```bash
 pipx install capalens-check            # once published to PyPI

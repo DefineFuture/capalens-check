@@ -55,7 +55,7 @@ permissions:
 steps:
   - uses: Capalens/capalens-check@v0
     with: { kind: run, target: capalens-targets.json, sarif-file: capalens.sarif }
-  - uses: github/codeql-action/upload-sarif@v3
+  - uses: github/codeql-action/upload-sarif@v4
     if: always()
     with: { sarif_file: capalens.sarif, category: capalens-check }
 ```
