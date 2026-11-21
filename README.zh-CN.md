@@ -7,9 +7,9 @@
 
 **面向智能接入（IA）的只读检查工具：AI 所连接的 MCP 服务器、API、智能体与技能。每条结果都附证据，遵循 IAP 证据格式的原则，不打分。**
 
-[官网](https://capalens.com) · [IA 与 IAP](docs/ia-and-iap.md#中文) · [English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
+[官网](https://capalens.com) · [IA 与 IAP](docs/ia-and-iap.md#中文) · [Wiki：思路理念](https://github.com/DefineFuture/capalens-ia-check/wiki) · [English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [持续监测](docs/monitoring.md) · [报告格式](docs/report-format.md) · [方法说明](docs/methodology.md) ·
-[同类项目对比](docs/comparison.md)
+[同类项目定位差异](docs/comparison.md#中文)
 
 `capalens-ia-check` 是 **CapaLens** 检测引擎的开源简化版。它快速、可重复地回答一个问题：*此刻对照这个接入自己的规范，能观察到什么？*
 

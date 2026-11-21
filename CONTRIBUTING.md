@@ -36,6 +36,16 @@ servers defined in the tests.
 * **Unknown over guessing.** If the check cannot observe the property, the outcome is `unknown`.
 * **Tests.** Each check needs a passing and a failing case.
 
+## Writing about other projects
+
+[docs/comparison.md](docs/comparison.md) compares **functional positioning only**: purpose, what is examined,
+how it works, what it produces. When you add or change text about another project:
+
+* describe it from its own documentation, with the date you checked;
+* state differences in purpose, scope or approach — never that capalens-ia-check detects more, fewer or better
+  problems, and never rank projects (no benchmark backs such a claim);
+* name complementary uses where they exist ("for full conformance, run the official suite").
+
 ## Pull requests
 
 * One change per pull request; describe the user-visible effect and add a line to `CHANGELOG.md` under

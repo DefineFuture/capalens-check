@@ -30,9 +30,15 @@ def test_same_host_get_redirect_is_followed() -> None:
 
 
 def test_post_is_never_redirected() -> None:
-    with LocalServer({"/mcp": lambda h: send(h, 307, headers={"Location": "/mcp2"})}) as srv:
+    def redirect(h: BaseHTTPRequestHandler) -> None:
+        # read the body first: answering with unread request data can reset the connection on Windows
+        h.rfile.read(int(h.headers.get("Content-Length") or 0))
+        send(h, 307, headers={"Location": "/mcp2"})
+
+    with LocalServer({"/mcp": redirect}) as srv:
         resp = HttpClient(timeout=5).request("POST", srv.url("/mcp"), body=b"{}")
-    assert resp.status == 307 and resp.error and "redirect" in resp.error
+    assert resp.status == 307, resp.error
+    assert resp.error and "redirect" in resp.error
 
 
 def test_response_size_is_capped() -> None:
