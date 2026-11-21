@@ -10,7 +10,8 @@ approval on the `pypi` environment.
 2. **Name the maintainers** (at least two people) and create the `DefineFuture/maintainers` team used in
    `.github/CODEOWNERS`.
 3. **Re-check the documents that describe other projects**: `docs/comparison.md` (names, links, current
-   behaviour) and every specification link in `src/capalens_ia_check/checks.py`.
+   behaviour, and that it still compares functional positioning only — never detection effectiveness or rank)
+   and every specification link in `src/capalens_ia_check/checks.py`.
 4. **Create the repository** `DefineFuture/capalens-ia-check` (public), then in its settings:
    * Branch protection on `main`: pull requests required, CI required, at least one review, no force pushes.
    * Security: enable private vulnerability reporting, Dependabot alerts and security updates, secret scanning

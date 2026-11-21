@@ -10,7 +10,7 @@ Evidence for every result, in the spirit of the IAP evidence format. No scores.*
 
 [Website](https://capalens.com) · [IA and IAP](docs/ia-and-iap.md) · [中文说明](README.zh-CN.md) · [Checks](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [Monitoring](docs/monitoring.md) · [Report format](docs/report-format.md) · [Methodology](docs/methodology.md) ·
-[Similar projects](docs/comparison.md)
+[Related projects: positioning](docs/comparison.md)
 
 `capalens-ia-check` is the small, open-source companion of the **CapaLens** detection engine. It answers one
 question about an Intelligent Access (IA), quickly and repeatably: *what can be observed about it right now, against its
