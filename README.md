@@ -43,7 +43,7 @@ Python 3.11 or newer.
 
 ```bash
 pipx install capalens-check            # once published to PyPI
-pipx install git+https://github.com/Capalens/capalens-check   # from the repository
+pipx install git+https://github.com/DefineFuture/capalens-check   # from the repository
 ```
 
 Or use `pip install capalens-check`, `uvx capalens-check`, or the container image (see [Docker](#docker)).
@@ -122,7 +122,7 @@ candidates. The full list with references is in [docs/checks.md](docs/checks.md)
 ## In GitHub Actions
 
 ```yaml
-- uses: Capalens/capalens-check@v0
+- uses: DefineFuture/capalens-check@v0
   with:
     kind: openapi            # mcp | openapi | agent-card | skill | run
     target: openapi.yaml
@@ -152,7 +152,7 @@ docker run --rm -v "$PWD:/work" capalens-check openapi /work/openapi.json
 
 ## Relationship to CapaLens
 
-[CapaLens](https://github.com/Capalens) maps AI integrations — MCP servers, APIs, agents, skills — with evidence
+[CapaLens](https://github.com/DefineFuture) maps AI integrations — MCP servers, APIs, agents, skills — with evidence
 about what they are and how they behave. Its detection engine runs a larger, four-layer pipeline with signed,
 versioned evidence and human review. `capalens-check` takes a subset of that engine's checks and its shared
 heuristics (`action-heuristic/3`, `poisoning-lexicon/0.1`) and makes them easy to run anywhere. Results from

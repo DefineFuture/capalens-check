@@ -11,7 +11,7 @@ Thank you for helping. Useful contributions, roughly in order of value:
 ## Development
 
 ```bash
-git clone https://github.com/Capalens/capalens-check
+git clone https://github.com/DefineFuture/capalens-check
 cd capalens-check
 python -m venv .venv && . .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e ".[dev,yaml]"

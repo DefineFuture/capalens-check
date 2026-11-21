@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Check the documents in capalens-targets.json
-        uses: Capalens/capalens-check@v0
+        uses: DefineFuture/capalens-check@v0
         with:
           kind: run
           target: capalens-targets.json

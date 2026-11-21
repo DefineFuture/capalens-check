@@ -6,7 +6,7 @@ authors:
   - name: "南京定义未来科技有限公司 (Nanjing Define Future Technology Co., Ltd.)"
 version: 0.1.0
 license: Apache-2.0
-repository-code: "https://github.com/Capalens/capalens-check"
+repository-code: "https://github.com/DefineFuture/capalens-check"
 keywords:
   - model-context-protocol
   - mcp

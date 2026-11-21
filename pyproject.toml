@@ -32,11 +32,11 @@ dev = ["pytest>=8.0", "ruff>=0.7", "mypy>=1.13", "jsonschema>=4.23"]
 
 [project.urls]
 # Intended location; the repository does not exist until publication is approved (RELEASING.md).
-Homepage = "https://github.com/Capalens/capalens-check"
-Documentation = "https://github.com/Capalens/capalens-check/tree/main/docs"
-Issues = "https://github.com/Capalens/capalens-check/issues"
-Changelog = "https://github.com/Capalens/capalens-check/blob/main/CHANGELOG.md"
-Security = "https://github.com/Capalens/capalens-check/blob/main/SECURITY.md"
+Homepage = "https://github.com/DefineFuture/capalens-check"
+Documentation = "https://github.com/DefineFuture/capalens-check/tree/main/docs"
+Issues = "https://github.com/DefineFuture/capalens-check/issues"
+Changelog = "https://github.com/DefineFuture/capalens-check/blob/main/CHANGELOG.md"
+Security = "https://github.com/DefineFuture/capalens-check/blob/main/SECURITY.md"
 
 [project.scripts]
 capalens-check = "capalens_check.cli:main"

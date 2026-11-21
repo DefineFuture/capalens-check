@@ -1,7 +1,7 @@
 # GitHub Action
 
 ```yaml
-- uses: Capalens/capalens-check@v0
+- uses: DefineFuture/capalens-check@v0
   with:
     kind: openapi
     target: openapi.yaml
@@ -36,7 +36,7 @@ environment variable per target (`"bearerEnv": "MY_MCP_TOKEN"`, or `"headersEnv"
 and set it on the step:
 
 ```yaml
-- uses: Capalens/capalens-check@v0
+- uses: DefineFuture/capalens-check@v0
   with:
     kind: run
     target: capalens-targets.json
@@ -53,7 +53,7 @@ inputs to its script through environment variables, never by expanding them insi
 permissions:
   security-events: write
 steps:
-  - uses: Capalens/capalens-check@v0
+  - uses: DefineFuture/capalens-check@v0
     with: { kind: run, target: capalens-targets.json, sarif-file: capalens.sarif }
   - uses: github/codeql-action/upload-sarif@v4
     if: always()

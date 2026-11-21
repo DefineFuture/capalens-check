@@ -28,7 +28,7 @@
 
 ```bash
 pipx install capalens-check                                   # 发布到 PyPI 之后
-pipx install git+https://github.com/Capalens/capalens-check   # 直接从仓库安装
+pipx install git+https://github.com/DefineFuture/capalens-check   # 直接从仓库安装
 ```
 
 需要读取 YAML 的 OpenAPI 文档时：`pip install "capalens-check[yaml]"`。
@@ -84,7 +84,7 @@ capalens-check run capalens-targets.json --baseline last-report.json --json-out 
 ## 在 GitHub Actions 中使用
 
 ```yaml
-- uses: Capalens/capalens-check@v0
+- uses: DefineFuture/capalens-check@v0
   with:
     kind: openapi          # mcp | openapi | agent-card | skill | run
     target: openapi.yaml

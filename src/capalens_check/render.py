@@ -147,7 +147,7 @@ def sarif(reports: list[Report], *, include_unknown: bool = False) -> dict[str, 
                     "driver": {
                         "name": "capalens-check",
                         "version": __version__,
-                        "informationUri": "https://github.com/Capalens/capalens-check",
+                        "informationUri": "https://github.com/DefineFuture/capalens-check",
                         "rules": rules,
                     }
                 },

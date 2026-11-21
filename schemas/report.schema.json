@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Capalens/capalens-check/schemas/report.schema.json",
+  "$id": "https://github.com/DefineFuture/capalens-check/schemas/report.schema.json",
   "title": "capalens-check report",
   "description": "One target (format capalens-check.report/1) or several (capalens-check.run/1). No score field exists by design.",
   "oneOf": [{ "$ref": "#/$defs/report" }, { "$ref": "#/$defs/run" }],

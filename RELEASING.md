@@ -6,18 +6,18 @@ approval on the `pypi` environment.
 
 ## First publication (once)
 
-1. **Approve publication** and the public name (`capalens-check`, repository `Capalens/capalens-check`).
-2. **Name the maintainers** (at least two people) and create the `Capalens/maintainers` team used in
+1. **Approve publication** and the public name (`capalens-check`, repository `DefineFuture/capalens-check`).
+2. **Name the maintainers** (at least two people) and create the `DefineFuture/maintainers` team used in
    `.github/CODEOWNERS`.
 3. **Re-check the documents that describe other projects**: `docs/comparison.md` (names, links, current
    behaviour) and every specification link in `src/capalens_check/checks.py`.
-4. **Create the repository** `Capalens/capalens-check` (public), then in its settings:
+4. **Create the repository** `DefineFuture/capalens-check` (public), then in its settings:
    * Branch protection on `main`: pull requests required, CI required, at least one review, no force pushes.
    * Security: enable private vulnerability reporting, Dependabot alerts and security updates, secret scanning
      and push protection, code scanning (CodeQL default setup).
    * Actions: default `GITHUB_TOKEN` read-only; require approval for workflows from first-time contributors.
    * Environment `pypi` with required reviewers (the maintainers).
-5. **PyPI**: create the project `capalens-check` as a pending trusted publisher (owner `Capalens`, repository
+5. **PyPI**: create the project `capalens-check` as a pending trusted publisher (owner `DefineFuture`, repository
    `capalens-check`, workflow `release.yml`, environment `pypi`). No API token is stored anywhere.
 6. **Pin actions** in `.github/workflows/*.yml` and `action.yml` to full commit SHAs (keep the version as a
    comment); Dependabot keeps them current.
