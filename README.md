@@ -8,7 +8,7 @@
 **Read-only checks for Intelligent Access (IA) — the MCP servers, APIs, agents and skills that AI connects to.
 Evidence for every result, in the spirit of the IAP evidence format. No scores.**
 
-[Website](https://capalens.com) · [IA and IAP](docs/ia-and-iap.md) · [中文说明](README.zh-CN.md) · [Checks](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
+[Website](https://capalens.com) · [IA and IAP](docs/ia-and-iap.md) · [Wiki: ideas](https://github.com/DefineFuture/capalens-ia-check/wiki) · [中文说明](README.zh-CN.md) · [Checks](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [Monitoring](docs/monitoring.md) · [Report format](docs/report-format.md) · [Methodology](docs/methodology.md) ·
 [Related projects: positioning](docs/comparison.md)
 
