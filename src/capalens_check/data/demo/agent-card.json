@@ -1,0 +1,22 @@
+{
+  "name": "Weather Agent",
+  "description": "Answers questions about the weather.",
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    { "url": "https://agent.example.com/a2a", "protocolBinding": "JSONRPC", "protocolVersion": "1.0" }
+  ],
+  "capabilities": { "streaming": true },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "securitySchemes": { "bearer": { "httpAuthSecurityScheme": { "scheme": "Bearer" } } },
+  "securityRequirements": [{ "schemes": { "bearer": { "list": [] } } }],
+  "skills": [
+    {
+      "id": "forecast",
+      "name": "Forecast",
+      "description": "Gives a three-day forecast for a city.",
+      "tags": ["weather", "forecast"],
+      "examples": ["Will it rain in Nanjing tomorrow?"]
+    }
+  ]
+}

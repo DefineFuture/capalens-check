@@ -1,0 +1,9 @@
+{
+  "defaults": { "timeout": 15, "maxRequests": 25 },
+  "targets": [
+    { "name": "my-mcp-server", "kind": "mcp", "location": "https://mcp.example.com/mcp", "bearerEnv": "MY_MCP_TOKEN" },
+    { "name": "my-api", "kind": "openapi", "location": "https://api.example.com/openapi.json" },
+    { "name": "my-agent", "kind": "agent-card", "location": "https://agents.example.com" },
+    { "name": "petstore-openapi", "kind": "openapi", "location": "openapi/petstore.json" }
+  ]
+}

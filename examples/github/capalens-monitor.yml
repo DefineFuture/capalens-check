@@ -1,0 +1,62 @@
+# Scheduled monitoring with capalens-check: copy to .github/workflows/ in your repository.
+#
+# Every day it checks the targets in capalens-targets.json, compares MCP tool definitions with the
+# previous run (SEC-004: changed, added or removed tools become review candidates), keeps the report
+# as an artifact, writes a summary to the run page, and fails when anything needs attention.
+# Tokens come from repository secrets through environment variables named in the targets file.
+
+name: CapaLens monitor
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Restore the previous report (the baseline)
+        uses: actions/cache/restore@v4
+        with:
+          path: .capalens/last.json
+          key: capalens-report-${{ github.run_id }}
+          restore-keys: capalens-report-
+
+      - name: Check every target
+        id: capalens
+        uses: Capalens/capalens-check@v0
+        with:
+          kind: run
+          target: capalens-targets.json
+          baseline: .capalens/last.json
+          fail-on: review
+          json-file: capalens-report.json
+          sarif-file: capalens-report.sarif
+        env:
+          MY_MCP_TOKEN: ${{ secrets.MY_MCP_TOKEN }} # named by "bearerEnv" in capalens-targets.json
+
+      - name: Keep this report as the next baseline
+        if: always() && steps.capalens.outputs.exit-code != '2'
+        run: mkdir -p .capalens && cp capalens-report.json .capalens/last.json
+
+      - uses: actions/cache/save@v4
+        if: always() && steps.capalens.outputs.exit-code != '2'
+        with:
+          path: .capalens/last.json
+          key: capalens-report-${{ github.run_id }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: capalens-report
+          path: |
+            capalens-report.json
+            capalens-report.sarif

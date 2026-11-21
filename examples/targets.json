@@ -1,0 +1,8 @@
+{
+  "defaults": { "timeout": 15, "maxRequests": 25 },
+  "targets": [
+    { "name": "petstore-openapi", "kind": "openapi", "location": "openapi/petstore.json" },
+    { "name": "release-notes-agent", "kind": "agent-card", "location": "agent-card.json" },
+    { "name": "release-notes-skill", "kind": "skill", "location": "skills/release-notes" }
+  ]
+}

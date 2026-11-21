@@ -1,0 +1,29 @@
+{
+  "name": "Release Notes Agent",
+  "description": "Drafts release notes from a list of merged pull requests.",
+  "version": "0.3.0",
+  "provider": { "organization": "Example Org", "url": "https://example.com" },
+  "supportedInterfaces": [
+    { "url": "https://agents.example.com/release-notes/a2a", "protocolBinding": "JSONRPC", "protocolVersion": "1.0" }
+  ],
+  "capabilities": { "streaming": false, "pushNotifications": false },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/markdown"],
+  "securitySchemes": {
+    "oauth": {
+      "oauth2SecurityScheme": {
+        "flows": { "clientCredentials": { "tokenUrl": "https://auth.example.com/token", "scopes": { "notes:write": "Draft notes" } } }
+      }
+    }
+  },
+  "securityRequirements": [{ "schemes": { "oauth": { "list": ["notes:write"] } } }],
+  "skills": [
+    {
+      "id": "draft-notes",
+      "name": "Draft release notes",
+      "description": "Groups merged pull requests by type and drafts release notes in Markdown.",
+      "tags": ["release", "changelog"],
+      "examples": ["Draft notes for the pull requests merged since v1.4.0"]
+    }
+  ]
+}

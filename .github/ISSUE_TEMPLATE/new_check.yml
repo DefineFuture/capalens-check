@@ -1,0 +1,34 @@
+name: New check
+description: Propose a check backed by a specification requirement or a documented risk.
+labels: [new-check]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [mcp, openapi, agent-card, skill, all kinds]
+    validations:
+      required: true
+  - type: textarea
+    id: property
+    attributes:
+      label: Property to check
+      description: What a pass and a fail look like
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Reference
+      description: Specification section or write-up of the risk (URL)
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Fits the rules
+      options:
+        - label: It needs only read-only requests (no tool calls, no writes)
+          required: true
+        - label: It produces evidence, not a score
+          required: true

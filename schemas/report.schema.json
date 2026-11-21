@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Capalens/capalens-check/schemas/report.schema.json",
+  "title": "capalens-check report",
+  "description": "One target (format capalens-check.report/1) or several (capalens-check.run/1). No score field exists by design.",
+  "oneOf": [{ "$ref": "#/$defs/report" }, { "$ref": "#/$defs/run" }],
+  "$defs": {
+    "outcome": { "enum": ["pass", "fail", "review", "unknown", "skip"] },
+    "counts": {
+      "type": "object",
+      "required": ["pass", "fail", "review", "unknown", "skip"],
+      "additionalProperties": false,
+      "properties": {
+        "pass": { "type": "integer", "minimum": 0 },
+        "fail": { "type": "integer", "minimum": 0 },
+        "review": { "type": "integer", "minimum": 0 },
+        "unknown": { "type": "integer", "minimum": 0 },
+        "skip": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": { "name": { "const": "capalens-check" }, "version": { "type": "string" } }
+    },
+    "result": {
+      "type": "object",
+      "required": ["id", "title", "layer", "level", "outcome", "message", "evidence", "reference"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^(MCP|OAS|A2A|SKILL|SEC)-[0-9]{3}$" },
+        "title": { "type": "string" },
+        "layer": { "enum": ["L0", "L1", "L3"] },
+        "level": { "enum": ["must", "should", "heuristic", "info"] },
+        "outcome": { "$ref": "#/$defs/outcome" },
+        "message": { "type": "string" },
+        "evidence": { "type": "object" },
+        "reference": { "type": "string" }
+      }
+    },
+    "report": {
+      "type": "object",
+      "required": ["format", "tool", "target", "startedAt", "finishedAt", "requests", "summary", "results", "facts", "notes", "disclaimer"],
+      "additionalProperties": false,
+      "properties": {
+        "format": { "const": "capalens-check.report/1" },
+        "tool": { "$ref": "#/$defs/tool" },
+        "target": {
+          "type": "object",
+          "required": ["kind", "location", "name"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "enum": ["mcp", "openapi", "agent-card", "skill"] },
+            "location": { "type": "string" },
+            "name": { "type": ["string", "null"] }
+          }
+        },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "finishedAt": { "type": ["string", "null"], "format": "date-time" },
+        "requests": { "type": "integer", "minimum": 0 },
+        "summary": { "$ref": "#/$defs/counts" },
+        "results": { "type": "array", "items": { "$ref": "#/$defs/result" } },
+        "facts": { "type": "object" },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "disclaimer": { "type": "string" }
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["format", "tool", "generatedAt", "summary", "reports"],
+      "additionalProperties": false,
+      "properties": {
+        "format": { "const": "capalens-check.run/1" },
+        "tool": { "$ref": "#/$defs/tool" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "summary": { "$ref": "#/$defs/counts" },
+        "reports": { "type": "array", "items": { "$ref": "#/$defs/report" } }
+      }
+    }
+  }
+}

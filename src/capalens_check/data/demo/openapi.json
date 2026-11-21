@@ -1,0 +1,37 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Weather Demo API",
+    "version": "1.0.0",
+    "description": "A small demo API used by `capalens-check demo`. Nothing is called."
+  },
+  "servers": [{ "url": "https://api.example.com/v1" }],
+  "security": [{ "apiKey": [] }],
+  "paths": {
+    "/forecast/{city}": {
+      "get": {
+        "operationId": "getForecast",
+        "summary": "Get the forecast for a city",
+        "parameters": [
+          { "name": "city", "in": "path", "required": true, "schema": { "type": "string" }, "description": "City name." }
+        ],
+        "responses": {
+          "200": { "description": "The forecast", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Forecast" } } } }
+        }
+      }
+    },
+    "/alerts/{region}": {
+      "get": {
+        "operationId": "getAlerts",
+        "summary": "List weather alerts for a region",
+        "responses": { "200": { "description": "Alerts" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Forecast": { "type": "object", "properties": { "summary": { "type": "string" }, "high": { "type": "number" } } }
+    },
+    "securitySchemes": { "apiKey": { "type": "apiKey", "in": "header", "name": "X-Api-Key" } }
+  }
+}

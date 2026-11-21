@@ -1,0 +1,32 @@
+name: Bug report
+description: capalens-check crashed, hung, or behaved differently from its documentation.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Security problems go to SECURITY.md, not here. Never paste tokens, private URLs or personal data."
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `capalens-check --version`
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: The command you ran (replace private URLs and paths)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Python version, local / GitHub Actions / Docker

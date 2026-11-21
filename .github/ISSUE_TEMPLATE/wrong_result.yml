@@ -1,0 +1,33 @@
+name: Wrong result
+description: A check failed something correct, passed something wrong, or flagged harmless text.
+labels: [wrong-result]
+body:
+  - type: input
+    id: check
+    attributes:
+      label: Check id
+      placeholder: SEC-003
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Got
+      options: [fail, review, pass, unknown, skip]
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal example
+      description: The smallest tool definition, document excerpt or SKILL.md that reproduces it (no private data)
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why the result is wrong
+      description: Quote the specification section if it is a protocol check
+    validations:
+      required: true

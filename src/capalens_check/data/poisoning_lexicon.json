@@ -1,0 +1,56 @@
+{
+  "version": "poisoning-lexicon/0.1",
+  "status": "public candidate lexicon; a hit is a candidate for human review, never a verdict",
+  "flagMixedScripts": false,
+  "categories": {
+    "instruction-override": [
+      "ignore (all |any )?(previous|prior|above|earlier) (instructions|rules|guidance)",
+      "disregard (the )?(system|developer) (prompt|message)",
+      "you are now",
+      "new instructions?:",
+      "do not (tell|inform|mention|reveal)( this)? to the user",
+      "without (telling|informing|asking) the user",
+      "\\bsystem prompt\\b"
+    ],
+    "hidden-directive": [
+      "<\\s*(important|system|hidden|secret|instructions?)\\s*>",
+      "\\[\\s*(important|system|hidden|secret)\\s*\\]",
+      "<!--[\\s\\S]*?(instruction|ignore|secret)[\\s\\S]*?-->"
+    ],
+    "local-secret-access": [
+      "~/\\.ssh",
+      "id_rsa",
+      "\\.aws/credentials",
+      "\\.env\\b",
+      "/etc/passwd",
+      "/etc/shadow",
+      "keychain",
+      "\\.kube/config",
+      "\\.npmrc",
+      "\\.git-credentials",
+      "%APPDATA%",
+      "AppData\\\\(Roaming|Local)"
+    ],
+    "exfiltration": [
+      "send (it|them|the (contents?|data|file|result))? ?to https?://",
+      "post (it|them|the (contents?|data))? ?to https?://",
+      "upload (it|them|the (contents?|data|file))? ?to https?://",
+      "curl https?://",
+      "webhook\\.site",
+      "requestbin",
+      "ngrok\\.io",
+      "\\.onion\\b"
+    ],
+    "credential-solicitation": [
+      "(enter|provide|paste|share) (your )?(password|api key|token|secret|credentials)",
+      "authorization: ?bearer",
+      "(pass|forward|include) (the )?(user'?s )?(token|credentials|cookies?)"
+    ],
+    "cross-tool-manipulation": [
+      "(before|after|instead of) (calling|using) (any|the|another) (other )?tool",
+      "always call this tool first",
+      "(modify|change|override) (the )?(arguments|parameters) of (other|another) tool",
+      "shadow"
+    ]
+  }
+}
