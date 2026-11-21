@@ -1,5 +1,5 @@
 # capalens-ia-check in a container: docker build -t capalens-ia-check . && docker run --rm capalens-ia-check demo
-FROM python:3.12-slim
+FROM python:3.15-slim
 
 LABEL org.opencontainers.image.title="capalens-ia-check" \
       org.opencontainers.image.description="Read-only checks for MCP servers, OpenAPI documents, A2A Agent Cards and Agent Skills" \
