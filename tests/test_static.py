@@ -8,8 +8,8 @@ from typing import Any
 
 import pytest
 
-from capalens_check import agent_card, openapi, skill
-from capalens_check.net import HttpClient
+from capalens_ia_check import agent_card, openapi, skill
+from capalens_ia_check.net import HttpClient
 from tests.conftest import DEMO_DATA, LocalServer, evidence, outcomes, send
 
 

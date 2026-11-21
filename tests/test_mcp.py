@@ -10,10 +10,10 @@ from typing import Any
 
 import pytest
 
-from capalens_check import mcp
-from capalens_check.demo import DemoServer
-from capalens_check.model import Report
-from capalens_check.net import HttpClient
+from capalens_ia_check import mcp
+from capalens_ia_check.demo import DemoServer
+from capalens_ia_check.model import Report
+from capalens_ia_check.net import HttpClient
 from tests.conftest import LocalServer, evidence, outcomes, send
 
 

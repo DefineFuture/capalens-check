@@ -6,8 +6,8 @@ from http.server import BaseHTTPRequestHandler
 
 import pytest
 
-from capalens_check.net import BudgetExceeded, HttpClient, load_json_bytes, public_location
-from capalens_check.sources import read
+from capalens_ia_check.net import BudgetExceeded, HttpClient, load_json_bytes, public_location
+from capalens_ia_check.sources import read
 from tests.conftest import LocalServer, Route, send
 
 
@@ -59,7 +59,7 @@ def test_user_agent_and_headers_are_sent() -> None:
 
     with LocalServer({"/a": echo}) as srv:
         HttpClient(timeout=5, headers={"X-Api-Key": "k"}).request("GET", srv.url("/a"))
-    assert seen["user-agent"].startswith("capalens-check/") and seen["x-api-key"] == "k"
+    assert seen["user-agent"].startswith("capalens-ia-check/") and seen["x-api-key"] == "k"
 
 
 @pytest.mark.parametrize(

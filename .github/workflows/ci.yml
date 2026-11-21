@@ -52,7 +52,7 @@ jobs:
       - run: python -m pip install -e ".[dev,yaml]"
       - run: python -m pytest
       - name: Demo (local loopback server only)
-        run: capalens-check demo
+        run: capalens-ia-check demo
 
   action:
     name: The action on the bundled examples
@@ -88,8 +88,8 @@ jobs:
       - name: Install the wheel and run it
         run: |
           python -m pip install dist/*.whl
-          capalens-check --version
-          capalens-check checks
+          capalens-ia-check --version
+          capalens-ia-check checks
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dist

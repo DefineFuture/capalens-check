@@ -1,4 +1,4 @@
-# Scheduled monitoring with capalens-check: copy to .github/workflows/ in your repository.
+# Scheduled monitoring with capalens-ia-check: copy to .github/workflows/ in your repository.
 #
 # Every day it checks the targets in capalens-targets.json, compares MCP tool definitions with the
 # previous run (SEC-004: changed, added or removed tools become review candidates), keeps the report
@@ -32,7 +32,7 @@ jobs:
 
       - name: Check every target
         id: capalens
-        uses: DefineFuture/capalens-check@v0
+        uses: DefineFuture/capalens-ia-check@v0
         with:
           kind: run
           target: capalens-targets.json

@@ -18,7 +18,7 @@ from typing import Any
 from . import __version__
 
 OUTCOMES = ("pass", "fail", "review", "unknown", "skip")
-REPORT_FORMAT = "capalens-check.report/1"
+REPORT_FORMAT = "capalens-ia-check.report/1"
 
 
 @dataclass(frozen=True)
@@ -109,7 +109,7 @@ class Report:
     def to_json(self) -> dict[str, Any]:
         return {
             "format": REPORT_FORMAT,
-            "tool": {"name": "capalens-check", "version": __version__},
+            "tool": {"name": "capalens-ia-check", "version": __version__},
             "target": {"kind": self.kind, "location": self.target, "name": self.name},
             "startedAt": self.started_at,
             "finishedAt": self.finished_at,

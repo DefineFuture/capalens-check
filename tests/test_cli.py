@@ -8,10 +8,10 @@ from pathlib import Path
 
 import pytest
 
-from capalens_check import cli
-from capalens_check.checks import CATALOGUE, CHECKS, for_kind
-from capalens_check.demo import DemoServer
-from capalens_check.heuristics import action_labels
+from capalens_ia_check import cli
+from capalens_ia_check.checks import CATALOGUE, CHECKS, for_kind
+from capalens_ia_check.demo import DemoServer
+from capalens_ia_check.heuristics import action_labels
 from tests.conftest import DEMO_DATA, ROOT
 
 SCHEMA = json.loads((ROOT / "schemas" / "report.schema.json").read_text(encoding="utf-8"))
@@ -71,7 +71,7 @@ def test_every_format_and_file_output(demo: DemoServer, tmp_path: Path, capsys: 
     assert "| FAIL | [MCP-005]" in md and "<details>" in md
     sarif = json.loads(outs["sarif"].read_text(encoding="utf-8"))
     run = sarif["runs"][0]
-    assert sarif["version"] == "2.1.0" and run["tool"]["driver"]["name"] == "capalens-check"
+    assert sarif["version"] == "2.1.0" and run["tool"]["driver"]["name"] == "capalens-ia-check"
     rule_ids = {r["id"] for r in run["tool"]["driver"]["rules"]}
     assert {r["ruleId"] for r in run["results"]} <= rule_ids
     levels = {r["ruleId"]: r["level"] for r in run["results"]}
@@ -93,7 +93,7 @@ def test_targets_file_with_relative_paths(demo: DemoServer, tmp_path: Path, caps
     code, _ = run_cli(["run", str(path), "--json-out", str(out)], capsys)
     data = json.loads(out.read_text(encoding="utf-8"))
     validate(data)
-    assert code == 0 and data["format"] == "capalens-check.run/1" and len(data["reports"]) == 2
+    assert code == 0 and data["format"] == "capalens-ia-check.run/1" and len(data["reports"]) == 2
     code, _ = run_cli(["run", str(path), "--baseline", str(out), "--format", "json"], capsys)
     assert code == 0
 
@@ -103,7 +103,7 @@ def test_step_summary_is_written_on_github(demo: DemoServer, tmp_path: Path, cap
     summary = tmp_path / "summary.md"
     monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
     run_cli(["mcp", demo.url("good")], capsys)
-    assert "# capalens-check report" in summary.read_text(encoding="utf-8")
+    assert "# capalens-ia-check report" in summary.read_text(encoding="utf-8")
 
 
 def test_demo_runs_every_kind(capsys: pytest.CaptureFixture[str]) -> None:
@@ -121,14 +121,14 @@ def test_demo_runs_every_kind(capsys: pytest.CaptureFixture[str]) -> None:
 def test_checks_doc_is_in_sync(capsys: pytest.CaptureFixture[str]) -> None:
     _, out = run_cli(["checks", "--format", "markdown"], capsys)
     assert (ROOT / "docs" / "checks.md").read_text(encoding="utf-8") == out, (
-        "run: capalens-check checks --format markdown > docs/checks.md"
+        "run: capalens-ia-check checks --format markdown > docs/checks.md"
     )
 
 
 def test_catalogue_is_consistent() -> None:
     ids = [c.id for c in CATALOGUE]
     assert len(ids) == len(set(ids)) == len(CHECKS)
-    source = "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / "src" / "capalens_check").glob("*.py"))
+    source = "\n".join(p.read_text(encoding="utf-8") for p in (ROOT / "src" / "capalens_ia_check").glob("*.py"))
     for cid in ids:  # every check is set somewhere: no dead catalogue entries
         assert re.search(rf'"{cid}"', source.replace(f'Check("{cid}"', "")), cid
     for kind in ("mcp", "openapi", "agent-card", "skill"):

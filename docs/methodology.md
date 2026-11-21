@@ -1,6 +1,6 @@
 # Methodology
 
-What a capalens-check result means, and what it does not.
+What a capalens-ia-check result means, and what it does not.
 
 ## Principles
 

@@ -10,11 +10,11 @@ from typing import Any
 
 import pytest
 
-from capalens_check.demo import DemoServer
-from capalens_check.model import Report
+from capalens_ia_check.demo import DemoServer
+from capalens_ia_check.model import Report
 
 ROOT = Path(__file__).resolve().parents[1]
-DEMO_DATA = Path(str(resources.files("capalens_check").joinpath("data/demo")))
+DEMO_DATA = Path(str(resources.files("capalens_ia_check").joinpath("data/demo")))
 
 
 @pytest.fixture(scope="session")

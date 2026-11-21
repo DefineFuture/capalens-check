@@ -1,13 +1,13 @@
 [project]
-name = "capalens-check"
+name = "capalens-ia-check"
 version = "0.1.0"
-description = "Read-only checks for AI integrations: MCP servers, OpenAPI documents, A2A Agent Cards and Agent Skills. Evidence, not scores."
+description = "Read-only checks for Intelligent Access (IA): MCP servers, OpenAPI documents, A2A Agent Cards and Agent Skills. Evidence, not scores."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "南京定义未来科技有限公司 (Nanjing Define Future Technology Co., Ltd.)", email = "Capalens@deffuture.com" }]
-keywords = ["mcp", "model-context-protocol", "openapi", "a2a", "agent-skills", "ai-agents", "security", "conformance", "sarif"]
+keywords = ["intelligent-access", "iap", "mcp", "model-context-protocol", "openapi", "a2a", "agent-skills", "ai-agents", "security", "conformance", "sarif"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
@@ -32,21 +32,21 @@ dev = ["pytest>=8.0", "ruff>=0.7", "mypy>=1.13", "jsonschema>=4.23"]
 
 [project.urls]
 Homepage = "https://capalens.com"
-Repository = "https://github.com/DefineFuture/capalens-check"
-Documentation = "https://github.com/DefineFuture/capalens-check/tree/main/docs"
-Issues = "https://github.com/DefineFuture/capalens-check/issues"
-Changelog = "https://github.com/DefineFuture/capalens-check/blob/main/CHANGELOG.md"
-Security = "https://github.com/DefineFuture/capalens-check/blob/main/SECURITY.md"
+Repository = "https://github.com/DefineFuture/capalens-ia-check"
+Documentation = "https://github.com/DefineFuture/capalens-ia-check/tree/main/docs"
+Issues = "https://github.com/DefineFuture/capalens-ia-check/issues"
+Changelog = "https://github.com/DefineFuture/capalens-ia-check/blob/main/CHANGELOG.md"
+Security = "https://github.com/DefineFuture/capalens-ia-check/blob/main/SECURITY.md"
 
 [project.scripts]
-capalens-check = "capalens_check.cli:main"
+capalens-ia-check = "capalens_ia_check.cli:main"
 
 [build-system]
 requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/capalens_check"]
+packages = ["src/capalens_ia_check"]
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -63,21 +63,21 @@ addopts = "-ra --strict-markers"
 line-length = 120
 target-version = "py311"
 src = ["src", "tests"]
-extend-exclude = ["src/capalens_check/data"]
+extend-exclude = ["src/capalens_ia_check/data"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF"]
 ignore = ["S101", "S310", "RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["capalens_check", "tests"]
+known-first-party = ["capalens_ia_check", "tests"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S105", "S106", "S108"]
-"src/capalens_check/checks.py" = ["E501"]  # a table, one check per entry
+"src/capalens_ia_check/checks.py" = ["E501"]  # a table, one check per entry
 
 [tool.mypy]
 strict = true
 python_version = "3.11"
-files = ["src/capalens_check"]
-exclude = ["src/capalens_check/data/"]
+files = ["src/capalens_ia_check"]
+exclude = ["src/capalens_ia_check/data/"]

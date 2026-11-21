@@ -6,7 +6,7 @@ A check is a snapshot. Monitoring is the same check on a schedule, compared with
 
 Every MCP report records, per tool, the SHA-256 of its definition (canonical JSON of the tool object: name,
 title, description, input schema, annotations, everything the server sent). Give an earlier report as
-`--baseline` and capalens-check compares:
+`--baseline` and capalens-ia-check compares:
 
 * **changed** — same name, different definition (a new description is the classic "rug pull": a tool approved
   once that later tells the model something else);
@@ -16,8 +16,8 @@ Any of these makes SEC-004 a `review` candidate with the names in its evidence. 
 Without a baseline SEC-004 is `skip`.
 
 ```bash
-capalens-check run capalens-targets.json --json-out today.json              # first run
-capalens-check run capalens-targets.json --baseline today.json --json-out tomorrow.json
+capalens-ia-check run capalens-targets.json --json-out today.json              # first run
+capalens-ia-check run capalens-targets.json --baseline today.json --json-out tomorrow.json
 ```
 
 A baseline can be a single-target report or a `run` report; targets are matched by location, then by name.
@@ -41,7 +41,7 @@ Turn on notifications for failed scheduled runs (or add a step that opens an iss
 Any scheduler works (cron, a CI system, a container job):
 
 ```bash
-docker run --rm -v "$PWD:/work" -w /work -e MY_MCP_TOKEN capalens-check \
+docker run --rm -v "$PWD:/work" -w /work -e MY_MCP_TOKEN capalens-ia-check \
   run capalens-targets.json --baseline last.json --json-out next.json --fail-on review
 ```
 

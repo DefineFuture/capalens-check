@@ -1,13 +1,13 @@
 cff-version: 1.2.0
-message: "If you use capalens-check in research or a report, please cite it as below."
-title: "capalens-check: read-only checks for AI integrations"
+message: "If you use capalens-ia-check in research or a report, please cite it as below."
+title: "capalens-ia-check: read-only checks for Intelligent Access (IA)"
 type: software
 authors:
   - name: "南京定义未来科技有限公司 (Nanjing Define Future Technology Co., Ltd.)"
 version: 0.1.0
 license: Apache-2.0
 url: "https://capalens.com"
-repository-code: "https://github.com/DefineFuture/capalens-check"
+repository-code: "https://github.com/DefineFuture/capalens-ia-check"
 keywords:
   - model-context-protocol
   - mcp

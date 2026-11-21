@@ -2,7 +2,7 @@
 # results in the code scanning view. Copy to .github/workflows/ and list your files in
 # capalens-targets.json (see examples/targets.json): one run gives one SARIF file.
 
-name: CapaLens check
+name: CapaLens IA check
 
 on:
   pull_request:
@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Check the documents in capalens-targets.json
-        uses: DefineFuture/capalens-check@v0
+        uses: DefineFuture/capalens-ia-check@v0
         with:
           kind: run
           target: capalens-targets.json
@@ -35,4 +35,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
         with:
           sarif_file: capalens.sarif
-          category: capalens-check
+          category: capalens-ia-check

@@ -1,12 +1,12 @@
 # Report format
 
 JSON reports follow [schemas/report.schema.json](../schemas/report.schema.json) (JSON Schema 2020-12). Two
-shapes: one target (`capalens-check.report/1`) and several (`capalens-check.run/1`, from `run` and `demo`).
+shapes: one target (`capalens-ia-check.report/1`) and several (`capalens-ia-check.run/1`, from `run` and `demo`).
 
 ```json
 {
-  "format": "capalens-check.report/1",
-  "tool": { "name": "capalens-check", "version": "0.1.0" },
+  "format": "capalens-ia-check.report/1",
+  "tool": { "name": "capalens-ia-check", "version": "0.1.0" },
   "target": { "kind": "mcp", "location": "https://mcp.example.com/mcp", "name": null },
   "startedAt": "2026-11-21T08:00:00Z",
   "finishedAt": "2026-11-21T08:00:02Z",
@@ -50,7 +50,7 @@ shapes: one target (`capalens-check.report/1`) and several (`capalens-check.run/
 ## SARIF
 
 `--sarif-out` writes SARIF 2.1.0 with one rule per check used and one result per `fail` or `review`
-(`must` fail → `error`, `should` fail and `review` → `warning`). `partialFingerprints.capalensCheck/v1` is stable
+(`must` fail → `error`, `should` fail and `review` → `warning`). `partialFingerprints.capalensIaCheck/v1` is stable
 per check and target, so code scanning tracks a finding across runs.
 
 ## Markdown

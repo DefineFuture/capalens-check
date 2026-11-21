@@ -3,7 +3,7 @@
   "info": {
     "title": "Weather Demo API",
     "version": "1.0.0",
-    "description": "A small demo API used by `capalens-check demo`. Nothing is called."
+    "description": "A small demo API used by `capalens-ia-check demo`. Nothing is called."
   },
   "servers": [{ "url": "https://api.example.com/v1" }],
   "security": [{ "apiKey": [] }],

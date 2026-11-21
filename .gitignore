@@ -11,7 +11,7 @@ dist/
 .coverage
 htmlcov/
 # reports produced by local runs
-capalens-check.json
-capalens-check.sarif
+capalens-ia-check.json
+capalens-ia-check.sarif
 capalens-report.*
 .capalens/

@@ -1,4 +1,4 @@
-capalens-check
+capalens-ia-check
 Copyright 2026 南京定义未来科技有限公司 (Nanjing Define Future Technology Co., Ltd.)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -11,7 +11,7 @@ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
 either express or implied. See the License for the specific language governing permissions
 and limitations under the License.
 
-capalens-check is the simplified, open-source companion of the CapaLens detection engine
+capalens-ia-check is the simplified, open-source companion of the CapaLens detection engine
 (capalens-probe). The action heuristic, the poisoning lexicon and the SKILL.md front-matter
 reader are shared with that engine.
 

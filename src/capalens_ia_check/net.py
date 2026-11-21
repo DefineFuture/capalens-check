@@ -22,7 +22,7 @@ from typing import Any
 
 from . import __version__
 
-USER_AGENT = f"capalens-check/{__version__} (+https://github.com/DefineFuture/capalens-check)"
+USER_AGENT = f"capalens-ia-check/{__version__} (+https://github.com/DefineFuture/capalens-ia-check)"
 MAX_BYTES = 5 * 1024 * 1024
 
 

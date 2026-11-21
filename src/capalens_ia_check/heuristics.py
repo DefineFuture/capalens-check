@@ -26,7 +26,7 @@ LEXICON_VERSION = "poisoning-lexicon/0.1"
 
 @cache
 def lexicon() -> dict[str, Any]:
-    with resources.files("capalens_check").joinpath("data/poisoning_lexicon.json").open("rb") as fh:
+    with resources.files("capalens_ia_check").joinpath("data/poisoning_lexicon.json").open("rb") as fh:
         data: dict[str, Any] = json.load(fh)
     return data
 

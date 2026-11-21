@@ -1,17 +1,34 @@
-# capalens-check
+# capalens-ia-check
 
 [![Website](https://img.shields.io/badge/website-capalens.com-0b6fbf)](https://capalens.com)
-[![CI](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml/badge.svg)](https://github.com/DefineFuture/capalens-check/actions/workflows/ci.yml)
+[![CI](https://github.com/DefineFuture/capalens-ia-check/actions/workflows/ci.yml/badge.svg)](https://github.com/DefineFuture/capalens-ia-check/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776ab)
 
-**面向 AI 智能体所连接对象的只读检查工具：MCP 服务器、OpenAPI 文档、A2A Agent Card 和 Agent Skills。每条结果都附证据，不打分。**
+**面向智能接入（IA）的只读检查工具：AI 所连接的 MCP 服务器、API、智能体与技能。每条结果都附证据，遵循 IAP 证据格式的原则，不打分。**
 
-[官网](https://capalens.com) · [English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
+[官网](https://capalens.com) · [IA 与 IAP](docs/ia-and-iap.md#中文) · [English](README.md) · [检查项清单](docs/checks.md) · [GitHub Action](docs/github-action.md) ·
 [持续监测](docs/monitoring.md) · [报告格式](docs/report-format.md) · [方法说明](docs/methodology.md) ·
 [同类项目对比](docs/comparison.md)
 
-`capalens-check` 是 **CapaLens** 检测引擎的开源简化版。它快速、可重复地回答一个问题：*此刻对照这个接入自己的规范，能观察到什么？*
+`capalens-ia-check` 是 **CapaLens** 检测引擎的开源简化版。它快速、可重复地回答一个问题：*此刻对照这个接入自己的规范，能观察到什么？*
+
+## IA 与 IAP
+
+> **IA：智能接入（Intelligent Access）。**在 CapaLens 的语境中，指能够通过 AI 或大模型应用连接、调用或操作的具体端点与入口能力，涵盖 MCP、API、CLI、SDK、远程连接、技能等形式。“智能”描述的是入口与 AI 工作流的关系，不要求服务本身内置大模型；被称为智能接入，不代表已经测试或做了安全背书。
+>
+> **IAP：智能接入协议（Intelligent Access Protocol，草案）。**CapaLens 项目提出的早期协议提案，希望让智能接入的能力说明、核查证据与信任判断拥有共同的数据语言。它不是另一个调用协议，不替代 MCP，也不替代注册中心：注册中心回答“有哪些”，IAP 记录“关于一条接入的证据”，包括版本、条件、权限、测试结果、检查日期和证据来源。IAP **不是已获采纳的行业标准，也不是 MCP 的组成部分**。
+
+| | IA（智能接入） | IAP（智能接入协议，草案） |
+| --- | --- | --- |
+| 是什么 | AI 使用外部能力的入口：MCP、API、CLI、SDK、远程连接、技能、智能体 | 关于一条智能接入的证据的数据语言（草案） |
+| 回答的问题 | AI 可以通过什么入口，使用哪些外部能力？ | 这条接入是什么、在什么条件下、有哪些依据？ |
+| capalens-ia-check 做什么 | 检查四类智能接入资料：MCP 服务器、OpenAPI 文档、A2A Agent Card、Agent Skills | 产出遵循 IAP 证据原则的机器检测证据：绑定版本和时间、未知写未知、不合成总分（暂不输出 IAP 记录） |
+
+延伸阅读：[IA 与 IAP](docs/ia-and-iap.md#中文) ·
+[什么是智能接入](https://capalens.com/zh/guides/what-is-intelligent-access/) ·
+[认识 IAP 智能接入协议草案](https://capalens.com/zh/guides/iap-protocol-draft/) ·
+[IAP 证据格式](https://capalens.com/zh/guides/iap-evidence-format/)
 
 ## 特点
 
@@ -32,16 +49,16 @@
 需要 Python 3.11 及以上：
 
 ```bash
-pipx install capalens-check                                   # 发布到 PyPI 之后
-pipx install git+https://github.com/DefineFuture/capalens-check   # 直接从仓库安装
+pipx install capalens-ia-check                                   # 发布到 PyPI 之后
+pipx install git+https://github.com/DefineFuture/capalens-ia-check   # 直接从仓库安装
 ```
 
-需要读取 YAML 的 OpenAPI 文档时：`pip install "capalens-check[yaml]"`。
+需要读取 YAML 的 OpenAPI 文档时：`pip install "capalens-ia-check[yaml]"`。
 
 ## 十秒体验
 
 ```bash
-capalens-check demo
+capalens-ia-check demo
 ```
 
 `demo` 会做两件事：
@@ -60,15 +77,15 @@ capalens-check demo
 ```bash
 # 远程 MCP 服务器（Streamable HTTP）。令牌从环境变量读取，不出现在命令行里
 export MCP_TOKEN=...
-capalens-check mcp https://mcp.example.com/mcp --bearer-env MCP_TOKEN
+capalens-ia-check mcp https://mcp.example.com/mcp --bearer-env MCP_TOKEN
 
 # OpenAPI 3.0/3.1 文档、A2A Agent Card（只给域名时读取 /.well-known/agent-card.json）、Agent Skill
-capalens-check openapi ./openapi.json
-capalens-check agent-card https://agents.example.com
-capalens-check skill ./skills/release-notes
+capalens-ia-check openapi ./openapi.json
+capalens-ia-check agent-card https://agents.example.com
+capalens-ia-check skill ./skills/release-notes
 
 # 一次检查多个目标，并与上一次的报告对比
-capalens-check run capalens-targets.json --baseline last-report.json --json-out report.json
+capalens-ia-check run capalens-targets.json --baseline last-report.json --json-out report.json
 ```
 
 | 选项 | 含义 |
@@ -89,7 +106,7 @@ capalens-check run capalens-targets.json --baseline last-report.json --json-out 
 ## 在 GitHub Actions 中使用
 
 ```yaml
-- uses: DefineFuture/capalens-check@v0
+- uses: DefineFuture/capalens-ia-check@v0
   with:
     kind: openapi          # mcp | openapi | agent-card | skill | run
     target: openapi.yaml
@@ -108,7 +125,7 @@ capalens-check run capalens-targets.json --baseline last-report.json --json-out 
 
 [CapaLens](https://capalens.com) 为 MCP 服务器、API、智能体、技能等 AI 接入建立有证据支撑的目录。它的检测引擎是完整的四层流水线，带签名、版本化的证据和人工复核。
 
-`capalens-check` 取其中一部分检查和共享的启发式算法（`action-heuristic/3`、`poisoning-lexicon/0.1`），做成随处可运行的工具。本工具的结果不是 CapaLens 目录结果。
+`capalens-ia-check` 取其中一部分检查和共享的启发式算法（`action-heuristic/3`、`poisoning-lexicon/0.1`），做成随处可运行的工具。本工具的结果不是 CapaLens 目录结果。
 
 ## 贡献、安全与许可
 

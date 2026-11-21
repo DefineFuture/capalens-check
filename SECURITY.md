@@ -20,14 +20,14 @@ the impact you see. Never include real credentials, personal data or another par
 
 ## In scope
 
-capalens-check itself: anything that makes it send more than read-only metadata requests, call a tool, follow a
+capalens-ia-check itself: anything that makes it send more than read-only metadata requests, call a tool, follow a
 redirect to another host, leak a credential into output or a report, execute content from a target, crash or hang
 on hostile input (oversized, malformed or endless responses), or let a target influence the checks run against it.
 
 ## Out of scope
 
 The security of the servers, documents or agents you check — report those to their owners. A `review`
-candidate or a `pass` is not a vulnerability in capalens-check; if you believe a result is wrong, open a
+candidate or a `pass` is not a vulnerability in capalens-ia-check; if you believe a result is wrong, open a
 "wrong result" issue.
 
 ## Using it safely

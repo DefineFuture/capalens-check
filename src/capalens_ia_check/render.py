@@ -12,7 +12,7 @@ from .model import OUTCOMES, Report, now, totals
 
 TAG = {"pass": "PASS", "fail": "FAIL", "review": "REVIEW", "unknown": "UNKNOWN", "skip": "SKIP"}
 NOTE = "No score: 'review' is a candidate for a human, never a verdict. Read-only metadata requests only."
-RUN_FORMAT = "capalens-check.run/1"
+RUN_FORMAT = "capalens-ia-check.run/1"
 
 
 def summary_line(counts: dict[str, int]) -> str:
@@ -23,7 +23,7 @@ def text(reports: list[Report], *, verbose: bool = False) -> str:
     lines: list[str] = []
     for rep in reports:
         title = f"{rep.name} - " if rep.name else ""
-        lines.append(f"capalens-check {__version__} | {title}{rep.kind} {rep.target}")
+        lines.append(f"capalens-ia-check {__version__} | {title}{rep.kind} {rep.target}")
         for r in rep.results:
             if r.outcome == "skip" and not verbose:
                 continue
@@ -45,7 +45,7 @@ def as_json(reports: list[Report]) -> dict[str, Any]:
         return reports[0].to_json()
     return {
         "format": RUN_FORMAT,
-        "tool": {"name": "capalens-check", "version": __version__},
+        "tool": {"name": "capalens-ia-check", "version": __version__},
         "generatedAt": now(),
         "summary": totals(reports),
         "reports": [r.to_json() for r in reports],
@@ -57,7 +57,7 @@ def _cell(value: str) -> str:
 
 
 def markdown(reports: list[Report]) -> str:
-    out: list[str] = ["# capalens-check report", ""]
+    out: list[str] = ["# capalens-ia-check report", ""]
     if len(reports) > 1:
         out += [
             "| Target | Kind | " + " | ".join(o for o in OUTCOMES) + " |",
@@ -134,7 +134,7 @@ def sarif(reports: list[Report], *, include_unknown: bool = False) -> dict[str, 
                     "level": _level(r.outcome, r.check.level),
                     "message": {"text": f"[{r.outcome}] {r.message}"},
                     "locations": [{"physicalLocation": {"artifactLocation": {"uri": rep.target.replace("\\", "/")}}}],
-                    "partialFingerprints": {"capalensCheck/v1": fingerprint},
+                    "partialFingerprints": {"capalensIaCheck/v1": fingerprint},
                     "properties": {"outcome": r.outcome, "targetKind": rep.kind, "evidence": r.evidence},
                 }
             )
@@ -145,9 +145,9 @@ def sarif(reports: list[Report], *, include_unknown: bool = False) -> dict[str, 
             {
                 "tool": {
                     "driver": {
-                        "name": "capalens-check",
+                        "name": "capalens-ia-check",
                         "version": __version__,
-                        "informationUri": "https://github.com/DefineFuture/capalens-check",
+                        "informationUri": "https://github.com/DefineFuture/capalens-ia-check",
                         "rules": rules,
                     }
                 },

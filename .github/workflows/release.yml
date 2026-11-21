@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/capalens-check
+      url: https://pypi.org/p/capalens-ia-check
     permissions:
       id-token: write
     steps:
@@ -67,4 +67,4 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           awk -v v="${TAG#v}" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > notes.md
-          gh release create "$TAG" dist/* --title "capalens-check $TAG" --notes-file notes.md --verify-tag
+          gh release create "$TAG" dist/* --title "capalens-ia-check $TAG" --notes-file notes.md --verify-tag

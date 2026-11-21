@@ -30,7 +30,7 @@ def parse(data: bytes) -> tuple[Any, str | None]:
     try:
         import yaml  # type: ignore[import-untyped]
     except ImportError:
-        return None, "YAML needs the optional extra: pip install 'capalens-check[yaml]'"
+        return None, "YAML needs the optional extra: pip install 'capalens-ia-check[yaml]'"
     try:
         return yaml.safe_load(text), None
     except yaml.YAMLError as exc:

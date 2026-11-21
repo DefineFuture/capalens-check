@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/DefineFuture/capalens-check/schemas/report.schema.json",
-  "title": "capalens-check report",
-  "description": "One target (format capalens-check.report/1) or several (capalens-check.run/1). No score field exists by design.",
+  "$id": "https://github.com/DefineFuture/capalens-ia-check/schemas/report.schema.json",
+  "title": "capalens-ia-check report",
+  "description": "One target (format capalens-ia-check.report/1) or several (capalens-ia-check.run/1). No score field exists by design.",
   "oneOf": [{ "$ref": "#/$defs/report" }, { "$ref": "#/$defs/run" }],
   "$defs": {
     "outcome": { "enum": ["pass", "fail", "review", "unknown", "skip"] },
@@ -21,7 +21,7 @@
     "tool": {
       "type": "object",
       "required": ["name", "version"],
-      "properties": { "name": { "const": "capalens-check" }, "version": { "type": "string" } }
+      "properties": { "name": { "const": "capalens-ia-check" }, "version": { "type": "string" } }
     },
     "result": {
       "type": "object",
@@ -43,7 +43,7 @@
       "required": ["format", "tool", "target", "startedAt", "finishedAt", "requests", "summary", "results", "facts", "notes", "disclaimer"],
       "additionalProperties": false,
       "properties": {
-        "format": { "const": "capalens-check.report/1" },
+        "format": { "const": "capalens-ia-check.report/1" },
         "tool": { "$ref": "#/$defs/tool" },
         "target": {
           "type": "object",
@@ -70,7 +70,7 @@
       "required": ["format", "tool", "generatedAt", "summary", "reports"],
       "additionalProperties": false,
       "properties": {
-        "format": { "const": "capalens-check.run/1" },
+        "format": { "const": "capalens-ia-check.run/1" },
         "tool": { "$ref": "#/$defs/tool" },
         "generatedAt": { "type": "string", "format": "date-time" },
         "summary": { "$ref": "#/$defs/counts" },

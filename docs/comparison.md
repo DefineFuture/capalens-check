@@ -1,10 +1,10 @@
 # Similar projects
 
-capalens-check borrows good ideas from several open-source projects and tries not to duplicate them. Use them
+capalens-ia-check borrows good ideas from several open-source projects and tries not to duplicate them. Use them
 together: each covers ground the others do not. (Checked against each repository's description and README on
 2026-11-21; these projects move fast.)
 
-| Project | What it is | Where capalens-check differs |
+| Project | What it is | Where capalens-ia-check differs |
 | --- | --- | --- |
 | [modelcontextprotocol/inspector](https://github.com/modelcontextprotocol/inspector) | The official developer tool for inspecting MCP servers: web UI, scriptable CLI, terminal UI; connects, lists and calls tools | Read-only by design (never calls a tool, stores no secrets); a pass/fail report against the specification with evidence, SARIF and exit codes; security screens; also OpenAPI, A2A and Skills |
 | [modelcontextprotocol/conformance](https://github.com/modelcontextprotocol/conformance) | The official conformance tests for MCP | A small read-only subset that runs against any remote server, plus security screens; run the official suite for full conformance |
@@ -19,7 +19,7 @@ together: each covers ground the others do not. (Checked against each repository
 
 Scores are useful for ranking many repositories by hygiene. For an integration an agent will call, a single
 number hides the one property that matters to you (does it authenticate? does its read-only tool describe
-deleting data?) and rewards fixing what is cheap to fix. capalens-check reports per-check outcomes with evidence
+deleting data?) and rewards fixing what is cheap to fix. capalens-ia-check reports per-check outcomes with evidence
 and leaves the weighing to the reader — the same decision the CapaLens engine made for its catalogue.
 
 ## Ideas taken, with thanks

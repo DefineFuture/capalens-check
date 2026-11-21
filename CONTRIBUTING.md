@@ -11,13 +11,13 @@ Thank you for helping. Useful contributions, roughly in order of value:
 ## Development
 
 ```bash
-git clone https://github.com/DefineFuture/capalens-check
-cd capalens-check
+git clone https://github.com/DefineFuture/capalens-ia-check
+cd capalens-ia-check
 python -m venv .venv && . .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e ".[dev,yaml]"
 pytest
 ruff check src tests && ruff format --check src tests && mypy
-capalens-check demo
+capalens-ia-check demo
 ```
 
 Tests never leave the machine: MCP behaviour is tested against the bundled demo server and small loopback
@@ -28,8 +28,8 @@ servers defined in the tests.
 * **Read-only.** A check may send metadata requests (`initialize`, `*/list`, an unknown method) and nothing
   that acts: no `tools/call`, `resources/read`, `prompts/get`, no write of any kind.
 * **One id, one meaning.** Ids (`MCP-012`) are stable. A check that changes meaning gets a new id; the old one is
-  retired, not reused. Add the entry to `src/capalens_check/checks.py` with a reference URL and a one-line
-  rationale, then regenerate the catalogue: `capalens-check checks --format markdown > docs/checks.md`.
+  retired, not reused. Add the entry to `src/capalens_ia_check/checks.py` with a reference URL and a one-line
+  rationale, then regenerate the catalogue: `capalens-ia-check checks --format markdown > docs/checks.md`.
 * **Evidence.** A `fail` or `review` says what was seen (names, fragments, counts) in `evidence`, never a
   credential and never more than needed.
 * **No scores.** Do not add a score, grade or weighting, in code or in documentation.

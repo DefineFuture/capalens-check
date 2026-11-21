@@ -29,10 +29,10 @@ META_VERSION = "io.modelcontextprotocol/protocolVersion"
 META_CAPS = "io.modelcontextprotocol/clientCapabilities"
 META_INFO = "io.modelcontextprotocol/clientInfo"
 META_SERVER = "io.modelcontextprotocol/serverInfo"
-CLIENT_INFO = {"name": "capalens-check", "version": __version__}
+CLIENT_INFO = {"name": "capalens-ia-check", "version": __version__}
 TOOL_NAME = re.compile(r"[A-Za-z0-9_.\-]{1,128}")
 MAX_PAGES = 20
-UNKNOWN_METHOD = "capalens-check/no-such-method"
+UNKNOWN_METHOD = "capalens-ia-check/no-such-method"
 
 
 @dataclass

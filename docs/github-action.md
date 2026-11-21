@@ -1,13 +1,13 @@
 # GitHub Action
 
 ```yaml
-- uses: DefineFuture/capalens-check@v0
+- uses: DefineFuture/capalens-ia-check@v0
   with:
     kind: openapi
     target: openapi.yaml
 ```
 
-The action installs capalens-check from its own checkout (no package index needed for the tool itself; PyYAML
+The action installs capalens-ia-check from its own checkout (no package index needed for the tool itself; PyYAML
 is installed for YAML documents), runs it, writes a Markdown summary to the run page, and leaves a JSON and a
 SARIF report in the workspace.
 
@@ -20,13 +20,13 @@ SARIF report in the workspace.
 | `fail-on` | `fail` | fail the step at or above `fail`, `review`, `unknown`; `never` to only report |
 | `baseline` | — | an earlier JSON report; ignored when the file does not exist (first run) |
 | `bearer-token` | — | sent as `Authorization: Bearer ...` for a single target; pass a secret |
-| `json-file` | `capalens-check.json` | JSON report path |
-| `sarif-file` | `capalens-check.sarif` | SARIF report path |
+| `json-file` | `capalens-ia-check.json` | JSON report path |
+| `sarif-file` | `capalens-ia-check.sarif` | SARIF report path |
 | `python-version` | `3.12` | Python used to run the tool |
 
 Outputs: `json-file`, `sarif-file`, `exit-code` (`0`, `1`, `2`).
 
-The Markdown summary goes to `$GITHUB_STEP_SUMMARY` whenever capalens-check runs inside GitHub Actions (also
+The Markdown summary goes to `$GITHUB_STEP_SUMMARY` whenever capalens-ia-check runs inside GitHub Actions (also
 when you call the CLI directly in a step); set `CAPALENS_STEP_SUMMARY=0` to turn it off.
 
 ## Credentials
@@ -36,7 +36,7 @@ environment variable per target (`"bearerEnv": "MY_MCP_TOKEN"`, or `"headersEnv"
 and set it on the step:
 
 ```yaml
-- uses: DefineFuture/capalens-check@v0
+- uses: DefineFuture/capalens-ia-check@v0
   with:
     kind: run
     target: capalens-targets.json
@@ -53,11 +53,11 @@ inputs to its script through environment variables, never by expanding them insi
 permissions:
   security-events: write
 steps:
-  - uses: DefineFuture/capalens-check@v0
+  - uses: DefineFuture/capalens-ia-check@v0
     with: { kind: run, target: capalens-targets.json, sarif-file: capalens.sarif }
   - uses: github/codeql-action/upload-sarif@v4
     if: always()
-    with: { sarif_file: capalens.sarif, category: capalens-check }
+    with: { sarif_file: capalens.sarif, category: capalens-ia-check }
 ```
 
 SARIF results carry the target as their location: a repository path for files, the URL for remote targets.
